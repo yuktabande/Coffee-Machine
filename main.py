@@ -44,13 +44,14 @@ print("☕Welcome to the Coffee Machine☕\n\n ")
 
 machine_status = True
 more_coffee = True
-
+# machine is on
 while machine_status:
     while more_coffee:
         coffee = input("What would you like (espresso/latte/cappuccino): \n")
         if coffee == 'off':
             off()
             break
+        # espresso
         elif coffee == 'espresso':
             if (MENU["espresso"]["ingredients"]["water"]) > (resources["water"]):
                 print("Sorry there is not enough water.")
@@ -58,43 +59,31 @@ while machine_status:
                 print("Sorry there is not enough coffee")
             else:
                 print("insert coins.")
-                quarter = input("quarter: $")
-                if quarter == 'off':
-                    off()
-                    break
-                elif quarter == 'report':
-                    report()
-                dimes = input("dimes: $")
-                if dimes == 'off':
-                    off()
-                    break
-                elif dimes == 'report':
-                    report()
-                nickles = input("nickles: $")
-                if nickles == 'off':
-                    off()
-                    break
-                elif nickles == 'report':
-                    report()
-                pennies = input("pennies: $")
-                if pennies == 'off':
-                    off()
-                    break
-                elif pennies == 'report':
-                    report()
+                quarter = int(input("quarter: $"))
+                dimes = int(input("dimes: $"))
+                nickles = int(input("nickles: $"))
+                pennies = int(input("pennies: $"))
+
                 money = 0.25*quarter + 0.10*dimes + 0.05*nickles + 0.01*pennies
-                if MENU["espresso"]["cost"] < MENU["espresso"]["cost"]:
+                if money < MENU["espresso"]["cost"]:
                     print("Sorry that's not enough money. Money refunded.")
-                elif  MENU["espresso"]["cost"] >= MENU["espresso"]["cost"]:
-                    if  MENU["espresso"]["cost"] > MENU["espresso"]["cost"]:
-                        change = round(money - MENU["espresso"]["cost"], 2)
-                        print(f"Here is ${change} dollars in change.")
+                elif  money > MENU["espresso"]["cost"]:
+                    change = round(money - MENU["espresso"]["cost"], 2)
+                    print(f"Here is ${change} dollars in change.")
                     money += MENU["espresso"]["cost"]
         #             Make Coffee
                     resources["water"] -= MENU["espresso"]["ingredients"]["water"]
                     resources["coffee"] -= MENU["espresso"]["ingredients"]["coffee"]
 
                     print(f"Here is your {coffee}. Enjoy!")
+                else:
+                    money += MENU["espresso"]["cost"]
+        #             Make Coffee
+                    resources["water"] -= MENU["espresso"]["ingredients"]["water"]
+                    resources["coffee"] -= MENU["espresso"]["ingredients"]["coffee"]
+
+                    print(f"Here is your {coffee}. Enjoy!")
+        # latte 
         elif coffee == 'latte':
             if (MENU["latte"]["ingredients"]["water"]) > (resources["water"]):
                 print("Sorry there is not enough water.")
@@ -102,40 +91,27 @@ while machine_status:
                 print("Sorry there is not enough coffee")
             elif (MENU["latte"]["ingredients"]["milk"]) > (resources["milk"]):
                 print("Sorry there is not enough milk")
-
+               
             else:
                 print("insert coins.")
-                quarter = input("quarter: $")
-                if quarter == 'off':
-                    off()
-                    break
-                elif quarter == 'report':
-                    report()
-                dimes = input("dimes: $")
-                if dimes == 'off':
-                    off()
-                    break
-                elif dimes == 'report':
-                    report()
-                nickles = input("nickles: $")
-                if nickles == 'off':
-                    off()
-                    break
-                elif nickles == 'report':
-                    report()
-                pennies = input("pennies: $")
-                if pennies == 'off':
-                    off()
-                    break
-                elif pennies == 'report':
-                    report()
+                quarter = int(input("quarter: $"))
+                dimes = int(input("dimes: $"))
+                nickles = int(input("nickles: $"))
+                pennies = int(input("pennies: $"))
+
                 money = 0.25*quarter + 0.10*dimes + 0.05*nickles + 0.01*pennies
-                if MENU["latte"]["cost"] < MENU["latte"]["cost"]:
+                if money < MENU["latte"]["cost"]:
                     print("Sorry that's not enough money. Money refunded.")
-                elif  MENU["latte"]["cost"] >= MENU["latte"]["cost"]:
-                    if  MENU["latte"]["cost"] > MENU["latte"]["cost"]:
-                        change = round(money - MENU["latte"]["cost"], 2)
-                        print(f"Here is ${change} dollars in change.")
+                elif  money > MENU["latte"]["cost"]:
+                    change = round(money - MENU["latte"]["cost"], 2)
+                    print(f"Here is ${change} dollars in change.")
+                    money += MENU["latte"]["cost"]
+        #             Make Coffee
+                    resources["water"] -= MENU["latte"]["ingredients"]["water"]
+                    resources["coffee"] -= MENU["latte"]["ingredients"]["coffee"]
+                    resources["milk"] -= MENU["latte"]["ingredients"]["milk"]
+                    print(f"Here is your {coffee}. Enjoy!")
+                else:
                     money += MENU["latte"]["cost"]
         #             Make Coffee
                     resources["water"] -= MENU["latte"]["ingredients"]["water"]
@@ -143,6 +119,8 @@ while machine_status:
                     resources["milk"] -= MENU["latte"]["ingredients"]["milk"]
 
                     print(f"Here is your {coffee}. Enjoy!")
+
+        # cappuccino
         elif coffee == 'cappuccino':
             if (MENU["cappuccino"]["ingredients"]["water"]) > (resources["water"]):
                 print("Sorry there is not enough water.")
@@ -153,37 +131,24 @@ while machine_status:
 
             else:
                 print("insert coins.")
-                quarter = input("quarter: $")
-                if quarter == 'off':
-                    off()
-                    break
-                elif quarter == 'report':
-                    report()
-                dimes = input("dimes: $")
-                if dimes == 'off':
-                    off()
-                    break
-                elif dimes == 'report':
-                    report()
-                nickles = input("nickles: $")
-                if nickles == 'off':
-                    off()
-                    break
-                elif nickles == 'report':
-                    report()
-                pennies = input("pennies: $")
-                if pennies == 'off':
-                    off()
-                    break
-                elif pennies == 'report':
-                    report()
+                quarter = int(input("quarter: $"))
+                dimes = int(input("dimes: $"))
+                nickles = int(input("nickles: $"))
+                pennies = int(input("pennies: $"))
+
                 money = 0.25*quarter + 0.10*dimes + 0.05*nickles + 0.01*pennies
-                if MENU["cappuccino"]["cost"] < MENU["cappuccino"]["cost"]:
+                if money < MENU["cappuccino"]["cost"]:
                     print("Sorry that's not enough money. Money refunded.")
-                elif  MENU["cappuccino"]["cost"] >= MENU["cappuccino"]["cost"]:
-                    if  MENU["cappuccino"]["cost"] > MENU["cappuccino"]["cost"]:
-                        change = round(money - MENU["cappuccino"]["cost"], 2)
-                        print(f"Here is ${change} dollars in change.")
+                elif  money > MENU["cappuccino"]["cost"]:
+                    change = round(money - MENU["cappuccino"]["cost"], 2)
+                    print(f"Here is ${change} dollars in change.")
+                    money += MENU["cappuccino"]["cost"]
+        #             Make Coffee
+                    resources["water"] -= MENU["cappuccino"]["ingredients"]["water"]
+                    resources["coffee"] -= MENU["cappuccino"]["ingredients"]["coffee"]
+                    resources["milk"] -= MENU["cappuccino"]["ingredients"]["milk"]
+                    print(f"Here is your {coffee}. Enjoy!")
+                else:
                     money += MENU["cappuccino"]["cost"]
         #             Make Coffee
                     resources["water"] -= MENU["cappuccino"]["ingredients"]["water"]
